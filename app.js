@@ -8,13 +8,20 @@ function translateToUzz(word) {
     return word + "uzz";
 }
 
+function translateSentence(sentence) {
+    return sentence
+        .split(" ")
+        .map(translateToUzz)
+        .join(" ");
+}
+
 document.getElementById("translateButton").addEventListener("click", () => {
     const userInput = document.getElementById("userInput").value.trim();
     if (userInput) {
-        const result = translateToUzz(userInput);
+        const result = translateSentence(userInput);
         document.getElementById("result").textContent = result;
         document.getElementById("definition").textContent = userInput + " huzz";
     } else {
-        document.getElementById("result").textContent = "Please enter a valid word.";
+        document.getElementById("result").textContent = "Please enter a valid sentence.";
     }
 });
